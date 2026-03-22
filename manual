@@ -1,0 +1,284 @@
+▸ I N I C I O — C Ó M O E J E C U T A R
+Arch Linux / Konsole
+chmod +x spydragon.sh
+./spydragon.sh
+Kali / Parrot / Ubuntu
+chmod +x spydragon.sh
+bash spydragon.sh
+Instalar dependencias (Arch)
+sudo pacman -S curl nmap whois bind-too
+ls traceroute openssl python
+Instalar dependencias (Debian/Ubuntu)
+sudo apt install curl nmap whois dnsuti
+ls traceroute openssl python3
+▸ R E F E R E N C I A R Á P I D A — T O D A S L A S H E R R A M I E N T A S
+# Herramienta Qué ingresas Ejemplo de
+entrada Requiere
+[01] IP Info / Lookup IP pública 8.8.8.8 curl
+[02] WHOIS Dominio Dominio (sin http:/") google.com whois
+[03] Ping Host IP o dominio 192.168.1.1 nativo
+S P Y D R A G O N
+C H E A T S H E E T D E C O M A N D O S — E T H I C A L O S I N T T O O L K I T v 1 . 0
+[ ! ] S O L O P A R A U S O E N S I S T E M A S C O N A U T O R I Z A C I Ó N E X P R E S A
+[04] GeoIP
+Localización
+IP pública 1.1.1.1 curl,
+python3
+[05] Info SSL/TLS Dominio (solo, sin
+https:/")
+github.com openssl
+[06] DNS Lookup Dominio cloudflare.com dig /
+nslookup
+[07] Cabeceras HTTP Dominio (sin https:/") example.com curl
+[08] Traceroute IP o dominio 8.8.8.8 traceroute
+[09] Puertos Abiertos IP o dominio +
+confirmar "s"
+192.168.1.1 → s nmap / nc
+[10] Análisis de
+Email
+Dominio del email empresa.com dig
+[11] Subdominios
+OSINT
+Dominio raíz tesla.com curl,
+python3
+[12] Reputación IP IP sospechosa 185.220.101.1 curl
+[13] robots.txt OSINT Dominio (sin https:/") reddit.com curl
+[14] Info de Red
+Local
+No requiere entrada (solo presiona
+ENTER)
+ip /
+ifconfig
+[15] Generar Reporte Nombre del archivo
+(opcional)
+reporte_hoy o
+ENTER
+bash
+nativo
+[16] Mi IP
+Pública/Privada
+No requiere entrada (solo presiona
+ENTER)
+curl, ip
+[17] Dominio → IP Dominio facebook.com dig, curl
+[18] IP desde Email Pegar cabeceras +
+escribir END
+[pegar] → END curl,
+python3
+[00] Salir — — —
+▸ P A S O A P A S O — C A D A H E R R A M I E N T A
+[ 0 1 ] I P I N F O / L O O K U P
+Información completa de una IP
+spydragon$ 1 ← escribe 1 y ENTER
+[ 0 2 ] W H O I S D O M I N I O
+Datos de registro de un dominio
+spydragon$ 2
+[>] Objetivo: 8.8.8.8
+IP : 8.8.8.8
+Ciudad : Mountain View
+País : US
+Organización : AS15169 Google LLC
+Coordenadas : 37.3860,-122.0838
+Requiere: curl · Solo IPs públicas
+[>] Objetivo: google.com
+Registrar : MarkMonitor Inc.
+Created : 1997-09-15
+Expires : 2028-09-14
+Name Server : ns1.google.com
+Requiere: whois
+[ 0 3 ] P I N G H O S T
+Verificar si un host está activo
+spydragon$ 3
+[>] Objetivo: 192.168.1.1 ← o
+dominio
+64 bytes from 192.168.1.1: time=1.23
+ms
+64 bytes from 192.168.1.1: time=0.98
+ms
+4 packets transmitted, 4 received, 0%
+loss
+Requiere: ping (nativo en Linux)
+[ 0 4 ] G E O I P L O C A L I Z A C I Ó N
+Localización geográfica de IP
+spydragon$ 4
+[>] Objetivo: 1.1.1.1
+country : AU
+city : Sydney
+isp : Cloudflare
+lat/lon : -33.86 / 151.20
+Requiere: curl, python3
+[ 0 5 ] I N F O S S L / T L S
+Certificado SSL de un sitio
+spydragon$ 5
+[>] Objetivo: github.com ← sin
+https:/"
+issuer : DigiCert Inc
+subject : CN=github.com
+notAfter: Mar 12 2026
+Requiere: openssl · Solo sitios con HTTPS
+[ 0 6 ] D N S L O O K U P
+Registros DNS completos
+spydragon$ 6
+[>] Objetivo: cloudflare.com
+-& Registro A -&
+104.16.132.229
+-& Registro MX -&
+10 mx.cloudflare.com
+-& Registro NS -&
+ns3.cloudflare.com
+Requiere: dig o nslookup
+[ 0 7 ] C A B E C E R A S H T T P
+Tecnología y seguridad del
+[ 0 8 ] T R A C E R O U T E
+Ruta de red hasta el destino
+servidor
+spydragon$ 7
+[>] Objetivo: example.com ← sin
+https:/"
+Server : nginx
+X-Powered-By : PHP/8.1
+Strict-Transport-Sec : max-
+age=31536000
+X-Frame-Options : SAMEORIGIN
+Requiere: curl
+spydragon$ 8
+[>] Objetivo: 8.8.8.8
+1 192.168.1.1 1.2 ms
+2 10.0.0.1 5.4 ms
+3 * * * ← router no responde
+15 8.8.8.8 18.7 ms
+Requiere: traceroute · Puede tardar ~30s
+[ 0 9 ] P U E R T O S A B I E R T O S
+Solo en sistemas con
+autorización
+spydragon$ 9
+[>] Objetivo: 192.168.1.100
+[?] ¿Tienes autorización? (s/N): s
+22/tcp open ssh
+80/tcp open http
+443/tcp open https
+[!] Solo usar en tus propios sistemas
+o con permiso escrito
+Requiere: nmap o nc
+[ 1 0 ] A N Á L I S I S D E E M A I L
+SPF, DMARC, DKIM de un dominio
+spydragon$ 10
+[>] Dominio email: empresa.com
+-& Registro SPF -&
+"v=spf1 include:_spf.google.com ~all"
+-& DMARC -&
+"v=DMARC1; p=reject;
+rua=mailto:dmarc@empresa.com"
+Requiere: dig
+[ 1 1 ] S U B D O M I N I O S O S I N T
+Subdominios vía certificados SSL
+públicos
+spydragon$ 11
+[>] Objetivo: tesla.com
+[+] api.tesla.com
+[+] auth.tesla.com
+[+] fleet.tesla.com
+[+] shop.tesla.com
+[ 1 2 ] R E P U T A C I Ó N I P
+¿Es una IP maliciosa?
+spydragon$ 12
+[>] Objetivo: 185.220.101.1
+org : Tor Project
+country: DE
+VirusTotal:
+virustotal.com/gui/ip-address/..(
+AbuseIPDB:
+[+] shop.tesla.com
+Requiere: curl, python3 · Fuente: crt.sh
+abuseipdb.com/check/..(
+Requiere: curl
+[ 1 3 ] R O B O T S . T X T O S I N T
+Rutas ocultas del sitio
+spydragon$ 13
+[>] Objetivo: reddit.com
+User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /user/*/comments
+Requiere: curl
+[ 1 4 ] I N F O R E D L O C A L
+Tu propia red — sin entrada
+requerida
+spydragon$ 14 ← no pide objetivo
+[+] eth0: 192.168.1.105/24
+[+] wlan0: 10.0.0.12/24
+Gateway : 192.168.1.1
+DNS : 8.8.8.8
+IP pública : 201.x.x.x
+Requiere: ip o ifconfig, curl
+[ 1 5 ] G E N E R A R R E P O R T E
+Guardar sesión en archivo .txt
+spydragon$ 15
+[>] Nombre [auto]: investigacion_01
+← o ENTER para auto
+[✓] Reporte guardado:
+investigacion_01.txt
+spydragon_report_20250322_145300.txt
+Requiere: bash nativo
+[ 1 6 ] M I I P P Ú B L I C A / P R I V A D A
+Tus IPs actuales — sin entrada
+spydragon$ 16 ← no pide objetivo
+-& IP Pública -&
+[+] 201.123.45.67 (Colombia / Claro)
+-& IPs Privadas -&
+[+] 192.168.1.105/24
+[+] 127.0.0.1/8
+Requiere: curl, ip
+[ 1 7 ] D O M I N I O → I P
+Resolver todas las IPs de un
+dominio
+spydragon$ 17
+[>] Objetivo: facebook.com
+-& IPv4 -&
+[+] 157.240.241.35
+org: AS32934 Facebook Inc. | US |
+Menlo Park
+-& IPv6 -&
+-& IPv6 -&
+[+] 2a03:2880:f12f:*face:b00c
+Requiere: dig, curl
+▸ [ 1 8 ] I P D E S D E E M A I L — U S O D E T A L L A D O
+C Ó M O O B T E N E R L A S C A B E C E R A S D E L E M A I L
+G Gmail: Abrir email → Tres puntos (⋮) → "Mostrar original" → Copiar todo el
+texto
+O Outlook: Abrir email → Archivo → Propiedades → Sección "Cabeceras de internet"
+T Thunderbird: Menú Ver → Código fuente del mensaje → Copiar la parte superior
+P A S O S E N S P Y D R A G O N
+1 Escribe 18 y presiona ENTER
+2 Pega las cabeceras del email en la terminal (Ctrl+Shift+V en Konsole)
+3 En una línea nueva escribe exactamente: END y presiona ENTER
+4 SpyDragon extrae todas las IPs públicas, filtra las privadas, y muestra
+país/ciudad/org de cada una
+[!] Las IPs 192.168.x.x, 10.x.x.x y 172.16-31.x.x son privadas y se filtran automáticamente
+— son routers internos, no el origen real.
+▸ F L U J O S D E I N V E S T I G A C I Ó N R E C O M E N D A D O S
+I N V E S T I G A R D O M I N I O
+S O S P E C H O S O
+1 [02] WHOIS → quién lo registró y
+cuándo
+2 [17] Dominio→IP → a qué IP apunta
+3 [01] IP Info → qué empresa es el
+hosting
+4 [05] SSL → tiene certificado
+válido
+I N V E S T I G A R E M A I L S O S P E C H O S O
+1 [18] IP desde Email → extraer IP
+origen
+2 [01] IP Info → información del
+origen
+3 [12] Reputación IP → ¿está
+reportada?
+4 [10] Análisis Email → SPF/DMARC
+del dominio
+5 [11] Subdominios → mapear
+infraestructura
+6 [15] Reporte → guardar hallazgos
+5 [02] WHOIS → datos del dominio
+remitente
+6 [15] Reporte → documentar
+S P Y D R A G O N v 1 . 0 — E t h i c a l O S I N T T o o l k i t — S t a y e t h i c a l . S t a y l e g a l .
